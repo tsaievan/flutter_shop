@@ -8,6 +8,7 @@ import 'package:flutter_shop/component/circle_check_box.dart';
 import 'package:flutter_shop/utils/color_util.dart';
 import 'package:flutter_shop/utils/random_util.dart';
 import 'package:flutter_shop/utils/router_util.dart';
+import 'package:flutter_shop/call/call.dart';
 
 
 void main() {
@@ -48,8 +49,15 @@ class _MyHomePageState extends State<MyHomePage> {
     // String str = RandomUtil.randomNumeric(10);
     // print(str);
 
-    var color = ColorUtil.string2Color('333333');
-    RouterUtil.toLoginPage(context, 'hello');
+    // var color = ColorUtil.string2Color('333333');
+    // RouterUtil.toLoginPage(context, 'hello');
+
+    Call.addCallBack('Test', callBack);
+    Call.dispatch('Test', data: {'name' : 'jack'});
+  }
+
+  callBack(data) {
+    print(data);
   }
 
   @override
