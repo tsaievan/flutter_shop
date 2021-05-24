@@ -14,9 +14,9 @@ class HomeContentModel {
       });
     }
 
-    if (json['categories'] != null) {
+    if (json['category'] != null) {
       categories = List<HomeCategoryModel>();
-      json['categories'].forEach((v) {
+      json['category'].forEach((v) {
         categories.add(HomeCategoryModel.fromJson(v));
       });
     }
