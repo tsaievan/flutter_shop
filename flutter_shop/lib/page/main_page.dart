@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_shop/config/string.dart';
 import 'package:flutter_shop/page/home/home_page.dart';
 import 'package:flutter_shop/page/category/category_page.dart';
@@ -36,6 +37,14 @@ class _MainPageState extends State<MainPage> {
 
   @override
   Widget build(BuildContext context) {
+    ScreenUtil.init(
+      BoxConstraints(
+        maxWidth: MediaQuery.of(context).size.width,
+        maxHeight: MediaQuery.of(context).size.height
+      ),
+      designSize: Size(750, 1334),
+      orientation: Orientation.portrait
+    );
     return Scaffold(
       bottomNavigationBar: BottomNavigationBar(
         type: BottomNavigationBarType.fixed,
