@@ -17,7 +17,14 @@ class _CategoryPageState extends State<CategoryPage> {
       appBar: AppBar(
         title: Text(KString.CATEGORY_TITLE),
       ),
-      body: Container(),
+      body: Container(
+        child: Row(
+          children: [
+            CategoryFirst(),
+            CategorySecond()
+          ],
+        ),
+      ),
     );
   }
 }

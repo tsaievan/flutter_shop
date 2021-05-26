@@ -42,6 +42,7 @@ class HomeCategory extends StatelessWidget {
             mainAxisSpacing: 10.0,
             crossAxisSpacing: 10.0,
           ),
+          itemCount: 10,
           itemBuilder: (context, index) {
             return _categroyItem(context, _list[index]);
           }
