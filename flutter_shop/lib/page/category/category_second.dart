@@ -36,6 +36,7 @@ class _CategorySecondState extends State<CategorySecond> {
   _getSecondCategory(int id) async {
     var response = await HttpService.get(ApiUrl.CATEGORY_SECOND, param: {'pid' : id});
     CategoryListModel model = CategoryListModel.fromJson(response['data']);
+    print(response['data']);
     if (model.list.length > 0) {
       var secondId = model.list[0].id;
       setState(() {
@@ -44,12 +45,7 @@ class _CategorySecondState extends State<CategorySecond> {
       });
     }
   }
-
-  @override
-  Widget build(BuildContext context) {
-    return Container();
-  }
-
+  
   Widget _categoryItem(List<CategoryModel> list, int index) {
     bool _isSelected = (list[index].id == _firstCategoryId);
     return InkWell(
@@ -76,6 +72,65 @@ class _CategorySecondState extends State<CategorySecond> {
             color: _isSelected ? KColor.PRIMARY_COLOR : Colors.black,
             fontSize: ScreenUtil().setSp(28),
           ),
+        ),
+      ),
+    );
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: EdgeInsets.only(left: 10),
+      child: Column(
+        children: [
+          Padding(
+              padding: EdgeInsets.only(top: 20.0)
+          ),
+          GridView.builder(
+            // 不让它滚动
+              physics: NeverScrollableScrollPhysics(),
+              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: 3,
+                mainAxisSpacing: 20.0,
+                crossAxisSpacing: 20.0,
+              ),
+              itemCount: _secondList.length,
+              shrinkWrap: true,
+              itemBuilder: (context, index) {
+                return _categroyItem(_secondList[index]);
+              }
+          ),
+          Padding(
+              padding: EdgeInsets.only(top: 10)
+          ),
+
+        ],
+      ),
+    );
+  }
+
+  Widget _categroyItem(CategoryModel categoryModel) {
+    return GestureDetector(
+      onTap: () {
+        setState(() {
+          _secondCategoryId = categoryModel.id;
+        });
+        // TODO: 二级分类点击跳转至商品列表
+      },
+      child: Container(
+        alignment: Alignment.center,
+        child: Column(
+          children: [
+            Image.network(
+              categoryModel.image,
+              fit: BoxFit.cover,
+              height: 60,
+            ),
+            Text(
+                categoryModel.name,
+              style: TextStyle(fontSize: 14.0, color: Colors.black54),
+            ),
+          ],
         ),
       ),
     );
