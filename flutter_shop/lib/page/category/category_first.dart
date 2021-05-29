@@ -41,7 +41,7 @@ class _CategoryFirstState extends State<CategoryFirst> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: ScreenUtil().setWidth(100),
+      width: ScreenUtil().setWidth(180),
       color: Colors.white,
       child: ListView.builder(
         itemCount: _firstList.length,
@@ -56,7 +56,10 @@ class _CategoryFirstState extends State<CategoryFirst> {
     bool _isSelected = (list[index].id == _firstCategoryId);
     return InkWell(
       onTap: () async {
-
+        int id = list[index].id;
+        setState(() {
+          _firstCategoryId = id;
+        });
       },
       child: Container(
         height: ScreenUtil().setHeight(80.0),
@@ -64,7 +67,7 @@ class _CategoryFirstState extends State<CategoryFirst> {
         decoration: BoxDecoration(
           border: Border(
             bottom: BorderSide(
-              color: _isSelected ? KColor.PRICE_TEXT_COLOR : Colors.white
+              color: _isSelected ? KColor.PRIMARY_COLOR : Colors.white
             )
           )
         ),
@@ -72,7 +75,7 @@ class _CategoryFirstState extends State<CategoryFirst> {
         child: Text(
           list[index].name,
           style: TextStyle(
-            color: _isSelected ? KColor.PRICE_TEXT_COLOR : Colors.black,
+            color: _isSelected ? KColor.PRIMARY_COLOR : Colors.black,
             fontSize: ScreenUtil().setSp(28),
           ),
         ),
