@@ -34,8 +34,7 @@ class _CategoryFirstState extends State<CategoryFirst> {
       _firstList = model.list;
       _firstCategoryId = id;
     });
-
-    // Call.dispatch(Notify.REFRESH_SECOND_CATEGORY, data: {'firstCategoryId' : id});
+    Call.dispatch(Notify.REFRESH_SECOND_CATEGORY, data: {'firstCategoryId' : id});
   }
 
   @override
@@ -60,6 +59,7 @@ class _CategoryFirstState extends State<CategoryFirst> {
         setState(() {
           _firstCategoryId = id;
         });
+        Call.dispatch(Notify.REFRESH_SECOND_CATEGORY, data: {'firstCategoryId' : id});
       },
       child: Container(
         height: ScreenUtil().setHeight(80.0),

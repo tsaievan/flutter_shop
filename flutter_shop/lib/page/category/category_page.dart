@@ -21,7 +21,9 @@ class _CategoryPageState extends State<CategoryPage> {
         child: Row(
           children: [
             CategoryFirst(),
-            CategorySecond()
+            Expanded(
+                child: CategorySecond()
+            )
           ],
         ),
       ),
