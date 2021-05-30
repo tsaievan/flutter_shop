@@ -5,6 +5,7 @@ import 'package:flutter_shop/model/category_model.dart';
 import 'package:flutter_shop/service/http_service.dart';
 import 'package:flutter_shop/call/call.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_shop/utils/router_util.dart';
 
 class CategorySecond extends StatefulWidget {
   const CategorySecond({Key key}) : super(key: key);
@@ -115,7 +116,7 @@ class _CategorySecondState extends State<CategorySecond> {
         setState(() {
           _secondCategoryId = categoryModel.id;
         });
-        // TODO: 二级分类点击跳转至商品列表
+        RouterUtil.toCategoryGoodListPage(context, _firstCategoryId, _secondCategoryId);
       },
       child: Container(
         alignment: Alignment.center,
@@ -135,5 +136,7 @@ class _CategorySecondState extends State<CategorySecond> {
       ),
     );
   }
+
+
 }
 
