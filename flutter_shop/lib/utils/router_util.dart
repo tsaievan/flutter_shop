@@ -11,10 +11,10 @@ class RouterUtil {
     );
   }
 
-  static toLoginPage(BuildContext context, String username) {
+  static toLoginPage(BuildContext context) {
     Navigator.push(
       context,
-      MaterialPageRoute(builder: (context) => LoginPage(username: username,))
+      MaterialPageRoute(builder: (context) => LoginPage())
     );
   }
 

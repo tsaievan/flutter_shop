@@ -57,7 +57,7 @@ class _MyHomePageState extends State<MyHomePage> {
     // print(str);
 
     // var color = ColorUtil.string2Color('333333');
-    RouterUtil.toLoginPage(context, 'hello');
+    RouterUtil.toLoginPage(context);
 
     // Call.dispatch('Test', data: {'name' : 'jack'});
   }
