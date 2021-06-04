@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_shop/call/call.dart';
+import 'package:flutter_shop/component/item_text_field.dart';
 import 'package:flutter_shop/component/logo_container.dart';
 import 'package:flutter_shop/config/color.dart';
 import 'package:flutter_shop/config/index.dart';
@@ -45,8 +47,79 @@ class _LoginPageState extends State<LoginPage> {
             LogoContainer(),
             SizedBox(
               height: 80,
-            )
+            ),
+            _textInputContent(context)
           ],
+        ),
+      ),
+    );
+  }
+
+  Widget _textInputContent(BuildContext context) {
+    return Container(
+      margin: EdgeInsets.only(left: 15, right: 15),
+      child: Column(
+        children: [
+          ItemTextField(
+            icon: Icon(Icons.person),
+            controller: _userNameController,
+            focusNode: _userNameNode,
+            title: KString.USER_NAME,
+            hintText: KString.PLEASE_INPUT_NAME,
+          ),
+          SizedBox(
+            height: 20,
+          ),
+          ItemTextField(
+            icon: Icon(Icons.lock),
+            controller: _pwdController,
+            focusNode: _pwdNode,
+            title: KString.PASSWORD,
+            hintText: KString.PLEASE_INPUT_PWD,
+          ),
+          SizedBox(
+            height: 20,
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              _forgetPasswordButton(),
+              _registButton()
+            ],
+          )
+        ],
+      ),
+    );
+  }
+  
+  Widget _forgetPasswordButton() {
+    return Container(
+      margin: EdgeInsets.all(ScreenUtil().setWidth(40)),
+      child: InkWell(
+        child: Text(
+          KString.FORGET_PASSWORD,
+          style: TextStyle(
+            color: Colors.black,
+            fontSize: ScreenUtil().setSp(28.0),
+          ),
+        ),
+      ),
+    );
+  }
+
+  Widget _registButton() {
+    return Container(
+      margin: EdgeInsets.all(ScreenUtil().setWidth(40)),
+      child: InkWell(
+        onTap: () {
+          // TODO: 跳转到注册界面
+        },
+        child: Text(
+          KString.FAST_REGISTER,
+          style: TextStyle(
+            color: Colors.black,
+            fontSize: ScreenUtil().setSp(28.0),
+          ),
         ),
       ),
     );
