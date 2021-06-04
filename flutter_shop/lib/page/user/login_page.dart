@@ -11,6 +11,7 @@ import 'package:flutter_shop/component/big_button.dart';
 import 'package:flutter_shop/model/user_model.dart';
 import 'package:flutter_shop/service/http_service.dart';
 import 'package:flutter_shop/utils/router_util.dart';
+import 'package:flutter_shop/utils/token_util.dart';
 
 class LoginPage extends StatefulWidget {
 
@@ -82,6 +83,7 @@ class _LoginPageState extends State<LoginPage> {
             focusNode: _pwdNode,
             title: KString.PASSWORD,
             hintText: KString.PLEASE_INPUT_PWD,
+            obscureText: true,
           ),
           SizedBox(
             height: 20,
@@ -159,7 +161,7 @@ class _LoginPageState extends State<LoginPage> {
     if (response['code'] == 0) {
       UserModel model = UserModel.fromJson(response['data']);
       MessageWidget.show(KString.LOGIN_SUCCESS);
-      //
+      await TokenUtil.saveLoginInfo(model);
       var data = {
         'username' : model.username,
         'isLogin' : true

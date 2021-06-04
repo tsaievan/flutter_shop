@@ -88,7 +88,6 @@ class _MemberPageState extends State<MemberPage> {
                   flex: 1,
                   child: InkWell(
                     onTap: () {
-                      // TODO: 跳转至登录界面
                       RouterUtil.toLoginPage(context);
                     },
                     child: Text(KString.LOGIN_OR_REGISTER, style: TextStyle(color: Colors.white),),
@@ -141,7 +140,7 @@ class _MemberPageState extends State<MemberPage> {
           KBigButton(
             text: KString.LOGOUT_TITLE,
             onPressed: () {
-              // TODO: 清理本地用户信息
+              TokenUtil.clearUserInfo();
               setState(() {
                 _isLogin = false;
                 _username = '';
